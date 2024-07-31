@@ -1,7 +1,7 @@
 import { AuthSession } from '~/modules/auth/auth.types'
 
 export default defineEventHandler(async event => {
-  const response = (await $fetch(process.env.API_URL + '/auth/login', {
+  const response = (await $fetch(process.env.API_URL + '/auth/register', {
     method: 'POST',
     body: await readBody(event)
   })) as unknown as AuthSession
@@ -9,7 +9,6 @@ export default defineEventHandler(async event => {
   await setUserSession(event, response)
 
   return {
-    status: 200,
-    body: response
+    status: 200
   }
 })

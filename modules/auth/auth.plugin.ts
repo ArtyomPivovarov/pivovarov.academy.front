@@ -5,21 +5,30 @@ export default defineNuxtPlugin({
   name: 'auth',
   setup: nuxtApp => {
     const baseUrl = 'auth'
+    const { fetch: fetchSession } = useUserSession()
     const { $api } = useNuxtApp()
 
     return {
       provide: {
         auth: {
-          login: (body: { email: string; password: string }) =>
-            $fetch(`/api/_auth/login`, {
+          login: async (body: { email: string; password: string }) => {
+            await $fetch(`/api/_auth/login`, {
               method: 'POST',
               body
-            }) as Promise<AuthSession>,
-          register: async (data: { email: string; password: string }) =>
-            $api(`${baseUrl}/register`, {
+            })
+            await fetchSession()
+          },
+          register: async (body: { email: string; password: string }) => {
+            await $fetch(`/api/_auth/register`, {
               method: 'POST',
-              data
-            }) as Promise<AuthSession>
+              body
+            })
+            await fetchSession()
+          },
+          logOut: async () => {
+            await $fetch(`/api/_auth/logout`, { method: 'POST' })
+            await fetchSession()
+          }
         }
       }
     }
