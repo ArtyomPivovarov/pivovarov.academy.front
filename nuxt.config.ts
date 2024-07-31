@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@hebilicious/vue-query-nuxt', '@nuxt/ui'],
+  modules: ['@hebilicious/vue-query-nuxt', '@nuxt/ui', 'nuxt-auth-utils'],
+  plugins: ['~/modules/api/api.plugin.ts', '~/modules/auth/auth.plugin.ts'],
   routeRules: {
-    '/api/**': {
+    '/backend-api/**': {
       proxy: `${process.env.API_URL || 'http://localhost:4200/api'}/**`
     }
   },
