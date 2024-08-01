@@ -1,5 +1,13 @@
+export enum LearningModuleLevel {
+  Trainee = 'trainee',
+  Junior = 'junior',
+  Middle = 'middle',
+  Senior = 'senior'
+}
+
 export interface LearningModule {
   id: number
+  level: LearningModuleLevel | null
   type: 'course' | 'intensive'
   title: string
   description: string | null

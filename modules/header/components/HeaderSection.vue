@@ -19,7 +19,7 @@ const links = [
 
 <template>
   <header
-    class="fixed top-0 flex w-full items-center justify-between py-4 px-8 leading-none"
+    class="z-50 fixed top-0 flex w-full items-center justify-between py-4 px-8 backdrop-blur-sm leading-none"
   >
     <NuxtLink :to="{ name: RouteName.Main }" class="flex items-center">
       <div class="text-2xl font-bold leading-none">pivovarov.academy</div>
