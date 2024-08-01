@@ -5,10 +5,53 @@ export enum LearningModuleLevel {
   Senior = 'senior'
 }
 
+export enum LearningModuleTechnology {
+  Html = 'html',
+  Css = 'css',
+  JavaScript = 'javascript',
+  TypeScript = 'typescript',
+  Sass = 'sass',
+  AngularJS = 'angular-js',
+  ReactJs = 'react-js',
+  VueJs = 'vue-js',
+  NextJS = 'next-js',
+  NuxtJS = 'nuxt-js',
+  NodeJS = 'node-js',
+  NestJS = 'nest-js',
+  Express = 'express',
+  MongoDB = 'mongodb',
+  MySQL = 'mysql',
+  PostgreSQL = 'postgresql',
+  Redis = 'redis',
+  Docker = 'docker',
+  AWS = 'aws',
+  Firebase = 'firebase',
+  Flutter = 'flutter',
+  ReactNative = 'react-native',
+  Electron = 'electron',
+  GraphQL = 'graphql',
+  Apollo = 'apollo',
+  REST = 'rest',
+  WebSockets = 'websockets',
+  WebRTC = 'webrtc',
+  PWA = 'pwa',
+  Monolith = 'monolith',
+  Testing = 'testing',
+  CI_CD = 'ci-cd',
+  DevOps = 'devops',
+  Git = 'git',
+  GitHub = 'github',
+  GitLab = 'gitlab',
+  VSCode = 'vscode',
+  WebStorm = 'webstorm',
+  IntelliJIDEA = 'intellij-idea'
+}
+
 export interface LearningModule {
   id: number
-  level: LearningModuleLevel | null
   type: 'course' | 'intensive'
+  level: LearningModuleLevel | null
+  technologies: LearningModuleTechnology[] | null
   title: string
   description: string | null
   published: boolean | null

@@ -3,6 +3,7 @@ import {
   type LearningModule,
   LearningModuleLevel
 } from '~/modules/learning-modules/learning-modules.types'
+import { LM_TECHNOLOGY_PRESET } from '~/modules/learning-modules/learning-modules.consts'
 
 defineProps<{
   module: LearningModule
@@ -11,9 +12,9 @@ defineProps<{
 
 <template>
   <div
-    class="rounded-3xl border-2 border-gray-950 dark:border-white/50 py-4 px-5"
+    class="flex flex-col rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all hover:scale-105"
   >
-    <div class="mb-6 text-xl font-semibold">
+    <div class="text-xl font-semibold">
       <UBadge
         v-if="module.level"
         :variant="
@@ -30,16 +31,36 @@ defineProps<{
         {{ module.level }}
       </UBadge>
 
-      <span>{{ module.title }}</span>
+      <span class="line-clamp-2">{{ module.title }}</span>
     </div>
 
-    <UIcon
-      name="i-hugeicons:ai-brain-05"
-      class="block w-[40%] h-max aspect-[1] mx-auto"
-    />
+    <div class="mt-auto">
+      <UIcon
+        :name="
+          (module.technologies?.[0] &&
+            LM_TECHNOLOGY_PRESET[module.technologies?.[0]].icon) ||
+          'i-hugeicons:ai-brain-05'
+        "
+        class="block w-[40%] h-max aspect-[1] mx-auto my-6"
+      />
 
-    <div class="text-sm">
-      {{ module.description }}
+      <div class="flex flex-wrap gap-1">
+        <UBadge
+          v-for="technology in module.technologies"
+          :style="{
+            boxShadow: 'none',
+            border: `2px solid ${LM_TECHNOLOGY_PRESET[technology].color}`
+          }"
+          :ui="{
+            rounded: 'rounded-full'
+          }"
+          color="white"
+          variant="outline"
+          class="capitalize inline-block ml-1"
+        >
+          {{ technology }}
+        </UBadge>
+      </div>
     </div>
   </div>
 </template>
