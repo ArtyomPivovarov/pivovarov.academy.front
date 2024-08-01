@@ -14,6 +14,6 @@ interface LearningModule {
 export default function () {
   return useQuery({
     queryKey: ['learning-module'],
-    queryFn: () => $fetch<LearningModule[]>('/api/learning-module')
+    queryFn: () => $fetch<LearningModule[]>('/backend-api/learning-module')
   })
 }

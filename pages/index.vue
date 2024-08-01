@@ -7,8 +7,12 @@ definePageMeta({
 })
 
 const { data: users } = useUsers()
+const { data: learningModules } = useLearningModules()
 </script>
 
 <template>
   <div>Users: {{ users }}</div>
+  <br />
+
+  <div>Learning modules: {{ learningModules }}</div>
 </template>

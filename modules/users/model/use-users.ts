@@ -8,6 +8,7 @@ export function useUsers() {
     queryKey: ['users'],
     queryFn: () =>
       $api('/user', {
+        cache: 'no-cache',
         params: {
           page: 1,
           limit: 10
