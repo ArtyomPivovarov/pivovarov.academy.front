@@ -1,0 +1,22 @@
+<script setup lang="ts">
+import type { LearningModule } from '~/modules/learning-modules/learning-modules.types'
+import { useLearningModules } from '~/modules/learning-modules/model/use-learning-modules'
+import LearningModuleCard from '~/modules/learning-modules/ui/LearningModuleCard.vue'
+
+const props = withDefaults(
+  defineProps<{
+    type?: LearningModule['type']
+  }>(),
+  {
+    type: undefined
+  }
+)
+
+const { data } = useLearningModules(toRef(props, 'type'))
+</script>
+
+<template>
+  <div class="mx-auto px-6 lg:px-4 grid grid-cols-4 gap-4 2xl-more:container">
+    <LearningModuleCard v-for="item in data" :key="item.id" :module="item" />
+  </div>
+</template>
