@@ -1,10 +1,14 @@
 import { AuthSession } from '~/modules/auth/auth.types'
 
 export default defineEventHandler(async event => {
-  const response = (await $fetch(process.env.API_URL + '/auth/register', {
-    method: 'POST',
-    body: await readBody(event)
-  })) as unknown as AuthSession
+  const runtimeConfig = useRuntimeConfig()
+  const response = (await $fetch(
+    runtimeConfig.public.apiUrl + '/auth/register',
+    {
+      method: 'POST',
+      body: await readBody(event)
+    }
+  )) as unknown as AuthSession
 
   await setUserSession(event, response)
 

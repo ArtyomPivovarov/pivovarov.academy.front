@@ -1,6 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@hebilicious/vue-query-nuxt', '@nuxt/ui', 'nuxt-auth-utils'],
+  runtimeConfig: {
+    // The private keys which are only available within server-side
+    public: {
+      // Keys within public, will be also exposed to the client-side
+      apiUrl: process.env.API_URL
+    }
+  },
+  modules: [
+    '@hebilicious/vue-query-nuxt',
+    '@nuxt/ui',
+    'nuxt-auth-utils',
+    '@vueuse/nuxt'
+  ],
   plugins: ['~/modules/api/api.plugin.ts', '~/modules/auth/auth.plugin.ts'],
   routeRules: {
     '/backend-api/**': {

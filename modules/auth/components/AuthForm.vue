@@ -4,7 +4,7 @@ import type { FormSubmitEvent } from '#ui/types'
 
 const { $auth } = useNuxtApp()
 
-const isRegister = ref(false)
+const isRegister = useBooleanQuery('registration')
 
 const schema = zod.object({
   email: zod.string().email('Неверный email'),
@@ -19,8 +19,6 @@ const state = reactive({
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  console.log(event.data)
-
   if (isRegister.value) {
     try {
       const response = await $auth.register(event.data)

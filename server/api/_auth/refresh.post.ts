@@ -2,6 +2,8 @@ import { AuthSession } from '~/modules/auth/auth.types'
 
 export default defineEventHandler(async event => {
   const session = await getUserSession(event)
+  const runtimeConfig = useRuntimeConfig()
+
   if (!session.refreshToken) {
     throw createError({
       statusCode: 401,
@@ -9,13 +11,16 @@ export default defineEventHandler(async event => {
     })
   }
 
-  const response = (await $fetch(process.env.API_URL + '/auth/refresh', {
-    method: 'POST',
-    body: await readBody(event),
-    headers: {
-      authorization: `Bearer ${session.refreshToken}`
+  const response = (await $fetch(
+    runtimeConfig.public.apiUrl + '/auth/refresh',
+    {
+      method: 'POST',
+      body: await readBody(event),
+      headers: {
+        authorization: `Bearer ${session.refreshToken}`
+      }
     }
-  })) as unknown as AuthSession
+  )) as unknown as AuthSession
 
   await setUserSession(event, response)
 

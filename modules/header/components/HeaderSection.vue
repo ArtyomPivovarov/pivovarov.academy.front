@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouteName } from '~/modules/router/router.consts.js'
+import UserInfo from '~/modules/users/components/UserInfo.vue'
 
 const links = [
   {
@@ -15,6 +16,7 @@ const links = [
     text: 'Интенсивы'
   }
 ]
+const { $auth } = useNuxtApp()
 </script>
 
 <template>
@@ -40,21 +42,35 @@ const links = [
 
     <AuthState v-slot="{ loggedIn }">
       <nav class="flex items-center gap-4">
-        <ULink
-          v-if="!loggedIn"
-          :to="{ query: { auth: 'true' } }"
-          inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-        >
-          Войти
-        </ULink>
+        <template v-if="loggedIn">
+          <UserInfo />
 
-        <ULink
-          v-if="!loggedIn"
-          :to="{ query: { auth: 'true', registration: 'true' } }"
-          inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-        >
-          Регистрация
-        </ULink>
+          <UButton
+            :padded="false"
+            color="gray"
+            variant="link"
+            icon="i-mdi:logout"
+            @click="$auth.logOut()"
+          />
+        </template>
+
+        <template v-else>
+          <ULink
+            v-if="!loggedIn"
+            :to="{ query: { auth: 'true' } }"
+            inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+          >
+            Войти
+          </ULink>
+
+          <ULink
+            v-if="!loggedIn"
+            :to="{ query: { auth: 'true', registration: 'true' } }"
+            inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+          >
+            Регистрация
+          </ULink>
+        </template>
       </nav>
     </AuthState>
   </header>

@@ -1,6 +1,3 @@
-import type { NuxtApp } from '#app'
-import type { AuthSession } from '~/modules/auth/auth.types'
-
 export default defineNuxtPlugin({
   name: 'auth',
   setup: nuxtApp => {

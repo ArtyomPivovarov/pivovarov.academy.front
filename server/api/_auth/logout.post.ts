@@ -1,5 +1,5 @@
 export default defineEventHandler(async event => {
-  // const response = (await $fetch(process.env.API_URL + '/auth/logout', { TODO
+  // const response = (await $fetch(runtimeConfig.public.apiUrl + '/auth/logout', { TODO
   //   method: 'POST'
   // })) as unknown as AuthSession
 
