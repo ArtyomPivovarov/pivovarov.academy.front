@@ -1,3 +1,5 @@
+import type { Lesson } from '~/modules/lessons/lessons.types'
+
 export enum LearningModuleLevel {
   Trainee = 'trainee',
   Junior = 'junior',
@@ -56,6 +58,7 @@ export interface LearningModule {
   description: string | null
   published: boolean | null
   private: boolean | null
+  lessons: Lesson[]
   createdAt: string
   updatedAt: string
 }

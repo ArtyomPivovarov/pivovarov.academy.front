@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/vue-query'
 import type { LearningModule } from '~/modules/learning-modules/learning-modules.types'
 
 export function useLearningModules(

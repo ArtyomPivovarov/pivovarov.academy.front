@@ -4,6 +4,8 @@ import {
   LearningModuleLevel
 } from '~/modules/learning-modules/learning-modules.types'
 import { LM_TECHNOLOGY_PRESET } from '~/modules/learning-modules/learning-modules.consts'
+import { RouteName } from '~/modules/router/router.consts'
+import TechnologyBadge from '~/modules/learning-modules/ui/TechnologyBadge.vue'
 
 defineProps<{
   module: LearningModule
@@ -11,8 +13,12 @@ defineProps<{
 </script>
 
 <template>
-  <div
-    class="flex flex-col rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all hover:scale-105"
+  <NuxtLink
+    :to="{
+      name: RouteName.LearningModule,
+      params: { id: module.id.toString() }
+    }"
+    class="flex flex-col rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all cursor-pointer hover:scale-105"
   >
     <div class="text-xl font-semibold">
       <UBadge
@@ -45,22 +51,12 @@ defineProps<{
       />
 
       <div class="flex flex-wrap gap-1">
-        <UBadge
+        <TechnologyBadge
           v-for="technology in module.technologies"
-          :style="{
-            boxShadow: 'none',
-            border: `2px solid ${LM_TECHNOLOGY_PRESET[technology].color}`
-          }"
-          :ui="{
-            rounded: 'rounded-full'
-          }"
-          color="white"
-          variant="outline"
-          class="capitalize inline-block ml-1"
-        >
-          {{ technology }}
-        </UBadge>
+          :key="technology"
+          :technology="technology"
+        />
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>

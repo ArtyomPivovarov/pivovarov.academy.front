@@ -2,5 +2,7 @@ export const enum RouteName {
   Auth = 'Auth',
   Main = 'Main',
   Courses = 'Courses',
-  Intensives = 'Intensives'
+  Intensives = 'Intensives',
+  LearningModule = 'LearningModule',
+  Lesson = 'Lesson'
 }
