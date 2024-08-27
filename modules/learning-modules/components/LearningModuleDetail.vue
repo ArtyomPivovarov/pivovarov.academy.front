@@ -11,8 +11,8 @@ const { data: learningModule } = useLearningModule(toRef(() => props.id))
 </script>
 
 <template>
-  <div v-if="learningModule" class="px-8">
-    <h1 class="text-5xl font-medium">
+  <div v-if="learningModule">
+    <h1 class="text-5xl font-medium text-gray-50 mb-12">
       {{ learningModule.title }}
 
       <div class="inline-flex flex-wrap gap-1 align-middle">
@@ -24,19 +24,22 @@ const { data: learningModule } = useLearningModule(toRef(() => props.id))
       </div>
     </h1>
 
-    <nav class="flex flex-col gap-3 max-w-2xl mt-12">
+    <nav class="flex flex-col gap-3 max-w-2xl text-xl">
       <NuxtLink
         v-for="(lesson, index) in learningModule.lessons"
         :key="lesson.id"
-        :to="{ name: RouteName.Lesson, params: { id: lesson.id } }"
-        class="flex items-center rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 px-5 text-xl hover:border-primary/75 hover:dark:border-primary/75 transition-all cursor-pointer"
+        :to="{
+          name: RouteName.Lesson,
+          params: { moduleId: learningModule.id, lessonId: lesson.id }
+        }"
+        class="flex items-center rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 px-5 hover:border-primary/75 hover:dark:border-primary/75 hover:text-white transition-all cursor-pointer user-select-none"
       >
         {{ index + 1 }}. {{ lesson.title }}
+
+        <UIcon name="i-mdi:chevron-right" class="ml-auto size-6" />
       </NuxtLink>
     </nav>
 
-    <p class="text-xl mt-20">
-      {{ learningModule.description }}
-    </p>
+    <div class="mt-20 text-content" v-html="learningModule.description" />
   </div>
 </template>

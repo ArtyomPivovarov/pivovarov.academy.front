@@ -58,7 +58,7 @@ const { $auth } = useNuxtApp()
           <ULink
             v-if="!loggedIn"
             :to="{ query: { auth: 'true' } }"
-            inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Войти
           </ULink>
@@ -66,7 +66,7 @@ const { $auth } = useNuxtApp()
           <ULink
             v-if="!loggedIn"
             :to="{ query: { auth: 'true', registration: 'true' } }"
-            inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+            class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Регистрация
           </ULink>

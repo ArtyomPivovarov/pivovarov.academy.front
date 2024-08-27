@@ -7,10 +7,10 @@ definePageMeta({
 })
 
 const {
-  params: { id }
+  params: { moduleId }
 } = useRoute()
 </script>
 
 <template>
-  <LearningModuleDetail :id="Number(id)" />
+  <LearningModuleDetail :id="Number(moduleId)" />
 </template>

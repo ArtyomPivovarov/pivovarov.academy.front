@@ -1,4 +1,4 @@
-import { AuthSession } from '~/modules/auth/auth.types'
+import type { AuthSession } from '~/modules/auth/auth.types'
 
 export default defineEventHandler(async event => {
   const session = await getUserSession(event)

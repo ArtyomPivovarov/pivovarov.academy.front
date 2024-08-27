@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "pivovarov.academy.front",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,28 +13,29 @@
   },
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "^0.3.0",
-    "@nuxt/kit": "^3.12.4",
-    "@nuxt/ui": "^2.18.2",
-    "@sidebase/nuxt-auth": "^0.8.1",
-    "@tanstack/vue-query": "^5.51.15",
-    "@vueuse/core": "^11.0.1",
-    "@vueuse/nuxt": "^11.0.1",
-    "@vueuse/router": "^11.0.1",
-    "ky": "^1.5.0",
-    "nuxt": "^3.12.4",
-    "nuxt-auth-utils": "^0.3.2",
-    "tailwindcss": "^3.4.7",
+    "@nuxt/kit": "^3.13.0",
+    "@nuxt/ui": "^2.18.4",
+    "@sidebase/nuxt-auth": "^0.8.2",
+    "@tanstack/vue-query": "^5.52.0",
+    "@vue/babel-plugin-jsx": "^1.2.2",
+    "@vueuse/core": "^11.0.3",
+    "@vueuse/nuxt": "^11.0.3",
+    "@vueuse/router": "^11.0.3",
+    "ky": "^1.7.1",
+    "nuxt": "^3.13.0",
+    "nuxt-auth-utils": "^0.3.4",
+    "tailwindcss": "^3.4.10",
     "vue": "latest",
     "zod": "^3.23.8"
   },
   "packageManager": "pnpm@9.2.0+sha512.98a80fd11c2e7096747762304106432b3ddc67dcf54b5a8c01c93f68a2cd5e05e6821849522a06fb76284d41a2660d5e334f2ee3bbf29183bf2e739b1dafa771",
   "devDependencies": {
     "@iconify-json/fa-brands": "^1.1.9",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^8.42.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.0"
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3"
   }
 }

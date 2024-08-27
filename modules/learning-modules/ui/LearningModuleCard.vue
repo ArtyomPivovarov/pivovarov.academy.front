@@ -16,7 +16,7 @@ defineProps<{
   <NuxtLink
     :to="{
       name: RouteName.LearningModule,
-      params: { id: module.id.toString() }
+      params: { moduleId: module.id.toString() }
     }"
     class="flex flex-col rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all cursor-pointer hover:scale-105"
   >
