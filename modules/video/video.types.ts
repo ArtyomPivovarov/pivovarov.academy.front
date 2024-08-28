@@ -1,6 +1,6 @@
 export interface Video {
-  title: string
-  src: string
-  previewSrc: string
-  duration: number
+  id: true
+  title: true
+  src: true
+  previewSrc: true
 }

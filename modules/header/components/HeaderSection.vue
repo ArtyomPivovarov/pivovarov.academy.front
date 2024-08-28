@@ -23,7 +23,10 @@ const { $auth } = useNuxtApp()
   <header
     class="z-50 fixed top-0 flex w-full items-center justify-between py-4 px-8 backdrop-blur-sm leading-none"
   >
-    <NuxtLink :to="{ name: RouteName.Main }" class="flex items-center">
+    <NuxtLink
+      :to="{ name: RouteName.Main }"
+      class="flex items-center text-gray-800 dark:text-gray-50"
+    >
       <div class="text-2xl font-bold leading-none">pivovarov.academy</div>
     </NuxtLink>
 

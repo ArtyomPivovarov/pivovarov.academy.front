@@ -7,10 +7,9 @@ defineProps<{
 <template>
   <iframe
     :src="src"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen
+    loading="lazy"
+    style="border: 0; width: 800px; height: 450px"
+    allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+    allowfullscreen="true"
   />
 </template>
