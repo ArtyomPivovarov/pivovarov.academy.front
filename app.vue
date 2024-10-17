@@ -8,5 +8,7 @@ import AuthModal from '~/modules/auth/components/AuthModal.vue'
     <NuxtPage />
   </NuxtLayout>
 
-  <AuthModal />
+  <ClientOnly>
+    <AuthModal />
+  </ClientOnly>
 </template>
