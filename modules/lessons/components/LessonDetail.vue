@@ -14,10 +14,14 @@ const { data: lesson } = useLesson(toRef(() => props.id))
 
 <template>
   <div v-if="learningModule && lesson">
-    <h1 class="text-5xl font-medium text-gray-50 mb-12">
+    <VideoWatch v-if="lesson?.video" :src="lesson.video.src" class="mb-6 md:mb-4" />
+
+    <h1 class="text-3xl md:text-xl font-medium text-gray-50 mb-5 md:mb-3">
       {{ lesson.title }}
     </h1>
 
-    <VideoWatch v-if="lesson?.video" :src="lesson.video.src" />
+    <div class="mb-13 md:mb-7">
+      {{ lesson.description }}
+    </div>
   </div>
 </template>

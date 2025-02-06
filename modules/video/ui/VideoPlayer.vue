@@ -11,5 +11,6 @@ defineProps<{
     style="border: 0; width: 800px; height: 450px"
     allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
     allowfullscreen="true"
+    class="aspect-video"
   />
 </template>

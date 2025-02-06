@@ -14,7 +14,7 @@ export enum LearningModuleTechnology {
   TypeScript = 'typescript',
   Sass = 'sass',
   AngularJS = 'angular-js',
-  ReactJs = 'react-js',
+  ReactJs = 'React.js',
   VueJs = 'vue-js',
   NextJS = 'next-js',
   NuxtJS = 'nuxt-js',
@@ -46,7 +46,8 @@ export enum LearningModuleTechnology {
   GitLab = 'gitlab',
   VSCode = 'vscode',
   WebStorm = 'webstorm',
-  IntelliJIDEA = 'intellij-idea'
+  IntelliJIDEA = 'intellij-idea',
+  SoftSkills = 'Soft skills'
 }
 
 export interface LearningModule {

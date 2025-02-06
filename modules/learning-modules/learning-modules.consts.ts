@@ -9,7 +9,7 @@ export const LM_TECHNOLOGY_PRESET: Record<
     color: '#f16529'
   },
   [LearningModuleTechnology.Css]: {
-    icon: 'i-logos:css-3',
+    icon: 'i-fa-brands:css3',
     color: '#2965f1'
   },
   [LearningModuleTechnology.JavaScript]: {
@@ -35,7 +35,7 @@ export const LM_TECHNOLOGY_PRESET: Record<
   },
   [LearningModuleTechnology.NextJS]: {
     icon: 'fa-brands:node-js',
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.NuxtJS]: {
     icon: 'i-fa-brands:node-js',
@@ -49,7 +49,7 @@ export const LM_TECHNOLOGY_PRESET: Record<
     color: '#e0234e'
   },
   [LearningModuleTechnology.Express]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.MongoDB]: {
     color: '#4db33d'
@@ -88,10 +88,10 @@ export const LM_TECHNOLOGY_PRESET: Record<
     color: '#3c1e39'
   },
   [LearningModuleTechnology.REST]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.WebSockets]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.WebRTC]: {
     color: '#333'
@@ -100,16 +100,16 @@ export const LM_TECHNOLOGY_PRESET: Record<
     color: '#5a5a5a'
   },
   [LearningModuleTechnology.Monolith]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.Testing]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.CI_CD]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.DevOps]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.Git]: {
     icon: 'i-fa-brands:git-square',
@@ -127,9 +127,12 @@ export const LM_TECHNOLOGY_PRESET: Record<
     color: '#007acc'
   },
   [LearningModuleTechnology.WebStorm]: {
-    color: '#000'
+    color: '#FFF'
   },
   [LearningModuleTechnology.IntelliJIDEA]: {
-    color: '#000'
+    color: '#FFF'
+  },
+  [LearningModuleTechnology.SoftSkills]: {
+    color: '#fca326'
   }
 }

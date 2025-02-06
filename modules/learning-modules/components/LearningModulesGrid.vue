@@ -16,7 +16,7 @@ const { data } = useLearningModules(toRef(props, 'type'))
 </script>
 
 <template>
-  <div class="mx-auto px-6 lg:px-4 grid grid-cols-4 gap-4 2xl-more:container">
-    <LearningModuleCard v-for="item in data" :key="item.id" :module="item" />
+  <div class="mx-auto flex flex-wrap justify-center gap-4 2xl-more:container">
+    <LearningModuleCard v-for="item in data" :key="item.id" :module="item" class="w-[320px] sm:w-full" />
   </div>
 </template>

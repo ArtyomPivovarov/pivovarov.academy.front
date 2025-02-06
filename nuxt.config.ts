@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   },
   modules: [
     '@hebilicious/vue-query-nuxt',
-    '@nuxt/ui',
     'nuxt-auth-utils',
     '@vueuse/nuxt'
   ],
@@ -20,5 +19,14 @@ export default defineNuxtConfig({
     }
   },
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  tailwindcss: {
+    configPath: '@/tailwind.config.ts',
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 })

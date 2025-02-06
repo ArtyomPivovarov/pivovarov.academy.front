@@ -16,5 +16,3 @@ defineProps<{
     <!--    <VideoPlaylist items=""></VideoPlaylist>-->
   </div>
 </template>
-
-<style scoped></style>

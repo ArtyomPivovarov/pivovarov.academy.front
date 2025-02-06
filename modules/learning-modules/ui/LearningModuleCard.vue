@@ -6,10 +6,26 @@ import {
 import { LM_TECHNOLOGY_PRESET } from '~/modules/learning-modules/learning-modules.consts'
 import { RouteName } from '~/modules/router/router.consts'
 import TechnologyBadge from '~/modules/learning-modules/ui/TechnologyBadge.vue'
+import type { BadgeVariant } from '#ui/types'
 
-defineProps<{
+const props = defineProps<{
   module: LearningModule
 }>()
+
+const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
+  switch (props.module.level) {
+    case LearningModuleLevel.Trainee:
+      return { label: 'Стажёр', variant: 'soft' }
+    case LearningModuleLevel.Junior:
+      return { label: 'Джуниор', variant: 'outline' }
+    case LearningModuleLevel.Middle:
+      return { label: 'Средний', variant: 'subtle' }
+    case LearningModuleLevel.Senior:
+      return { label: 'Старший', variant: 'solid' }
+    default:
+      return { label: '', variant: 'solid' }
+  }
+})
 </script>
 
 <template>
@@ -23,18 +39,10 @@ defineProps<{
     <div class="text-xl font-semibold">
       <UBadge
         v-if="module.level"
-        :variant="
-          module.level === LearningModuleLevel.Trainee
-            ? 'soft'
-            : module.level === LearningModuleLevel.Junior
-              ? 'outline'
-              : module.level === LearningModuleLevel.Middle
-                ? 'subtle'
-                : 'solid'
-        "
-        class="capitalize float-right inline-block ml-1"
+        :variant="levelData.variant"
+        class="capitalize float-right inline-block ml-2"
       >
-        {{ module.level }}
+        {{ levelData.label }}
       </UBadge>
 
       <span class="line-clamp-2">{{ module.title }}</span>
