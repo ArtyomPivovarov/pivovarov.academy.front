@@ -4,7 +4,12 @@ import LearningModulesGrid from '~/modules/learning-modules/components/LearningM
 
 definePageMeta({
   name: RouteName.Main,
-  layout: 'main'
+  layout: 'main',
+  breadcrumb: {
+    icon: 'i-heroicons-home',
+    ariaLabel: 'Главная',
+    label: 'Главная'
+  },
 })
 </script>
 

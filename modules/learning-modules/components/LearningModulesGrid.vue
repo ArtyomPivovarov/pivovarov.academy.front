@@ -12,7 +12,10 @@ const props = withDefaults(
   }
 )
 
-const { data } = useLearningModules(toRef(props, 'type'))
+const { data, suspense } = useLearningModules(toRef(props, 'type'))
+onServerPrefetch(async () => {
+  await suspense()
+})
 </script>
 
 <template>

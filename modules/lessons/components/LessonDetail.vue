@@ -8,17 +8,21 @@ const props = defineProps<{
   id: number
 }>()
 
-const { data: learningModule } = useLearningModule(toRef(() => props.moduleId))
-const { data: lesson } = useLesson(toRef(() => props.id))
+const { data: learningModule, suspense: learningModuleSuspense } = useLearningModule(toRef(() => props.moduleId))
+const { data: lesson, suspense: lessonSuspense } = useLesson(toRef(() => props.id))
+
+onServerPrefetch(async () => {
+  await Promise.all([learningModuleSuspense(), lessonSuspense()])
+})
 </script>
 
 <template>
   <div v-if="learningModule && lesson">
-    <VideoWatch v-if="lesson?.video" :src="lesson.video.src" class="mb-6 md:mb-4" />
-
-    <h1 class="text-3xl md:text-xl font-medium text-gray-50 mb-5 md:mb-3">
+    <h1 class="text-5xl md:text-2xl font-medium text-gray-50 mb-5 md:mb-3">
       {{ lesson.title }}
     </h1>
+
+    <VideoWatch v-if="lesson?.video" :src="lesson.video.src" class="mb-6 md:mb-4" />
 
     <div class="mb-13 md:mb-7">
       {{ lesson.description }}

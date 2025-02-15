@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import HeaderSection from '~/modules/header/components/HeaderSection.vue'
-import BackButton from '~/modules/header/components/BackButton.vue'
-
-const router = useRouter()
 </script>
 
 <template>
@@ -10,8 +7,6 @@ const router = useRouter()
     <HeaderSection />
 
     <main class="p-8 md:p-5 max-w-[1280px] mx-auto box-content">
-      <BackButton class="mb-6" @click="router.back()"/>
-
       <slot />
     </main>
   </div>

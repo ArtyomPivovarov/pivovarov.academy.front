@@ -52,7 +52,7 @@ export enum LearningModuleTechnology {
 
 export interface LearningModule {
   id: number
-  type: 'course' | 'intensive'
+  type: 'course' | 'intensive' | string
   level: LearningModuleLevel | null
   technologies: LearningModuleTechnology[] | null
   title: string

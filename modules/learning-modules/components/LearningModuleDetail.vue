@@ -7,7 +7,10 @@ const props = defineProps<{
   id: number
 }>()
 
-const { data: learningModule } = useLearningModule(toRef(() => props.id))
+const { data: learningModule, suspense } = useLearningModule(toRef(() => props.id))
+onServerPrefetch(async () => {
+  await suspense()
+})
 </script>
 
 <template>

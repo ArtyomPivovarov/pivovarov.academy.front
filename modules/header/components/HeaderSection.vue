@@ -4,14 +4,16 @@ import UserInfo from '~/modules/users/components/UserInfo.vue'
 
 const links = [
   {
-    to: { name: RouteName.Courses },
+    to: { query: { type: 'course' } },
     text: 'Курсы'
   },
   {
-    to: { name: RouteName.Intensives },
+    to: { query: { type: 'intensive' } },
     text: 'Интенсивы'
   }
 ]
+
+const type = useRouteQuery('type')
 const { $auth } = useNuxtApp()
 </script>
 
@@ -71,6 +73,7 @@ const { $auth } = useNuxtApp()
     >
       <ULink
         v-for="link in links"
+        :active="type === link.to.query.type"
         active-class="text-primary"
         inactive-class="hover:text-gray-700 dark:hover:text-gray-200 md:text-base"
         :to="link.to"

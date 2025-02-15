@@ -9,10 +9,12 @@ export default defineNuxtConfig({
   },
   modules: [
     '@hebilicious/vue-query-nuxt',
+    '@nuxt/ui',
     'nuxt-auth-utils',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    'nuxt-seo-utils',
   ],
-  plugins: ['~/modules/api/api.plugin.ts', '~/modules/auth/auth.plugin.ts'],
+  plugins: ['~/modules/query/query.plugin.ts', '~/modules/api/api.plugin.ts', '~/modules/auth/auth.plugin.ts'],
   routeRules: {
     '/backend-api/**': {
       proxy: `${process.env.API_URL || 'http://localhost:4200/api'}/**`
