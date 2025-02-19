@@ -16,6 +16,9 @@ export default <Partial<Config>>{
       'sm-more': { min: '640px' },
       xs: { max: '319px' },
       'xs-more': { min: '320px' }
+    },
+    aspectRatio: {
+      '16/9': '16/9',
     }
   }
 }

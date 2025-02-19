@@ -14,7 +14,13 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-seo-utils',
   ],
-  plugins: ['~/modules/query/query.plugin.ts', '~/modules/api/api.plugin.ts', '~/modules/auth/auth.plugin.ts'],
+  plugins: [
+    '~/modules/query/query.plugin.ts',
+    '~/modules/api/api.plugin.ts',
+    '~/modules/auth/auth.plugin.ts',
+    '~/modules/subscription/subscription.plugin.ts',
+    '~/modules/video/video.plugin.ts',
+  ],
   routeRules: {
     '/backend-api/**': {
       proxy: `${process.env.API_URL || 'http://localhost:4200/api'}/**`

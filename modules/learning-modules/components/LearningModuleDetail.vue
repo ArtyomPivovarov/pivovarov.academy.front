@@ -15,7 +15,7 @@ onServerPrefetch(async () => {
 
 <template>
   <div v-if="learningModule">
-    <h1 class="text-5xl md:text-2xl font-medium text-gray-50 mb-12 md:mb-6">
+    <h1 class="text-5xl md:text-2xl font-medium text-gray-50 mb-8 md:mb-6">
       {{ learningModule.title }}
 
       <div class="inline-flex flex-wrap gap-1 align-middle">

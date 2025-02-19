@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import LearningModulesGrid from '~/modules/learning-modules/components/LearningModulesGrid.vue'
+import { useTypeRouteQuery } from '~/modules/learning-modules/model/use-type-route-query'
+import { RouteName } from '~/modules/router/router.consts'
 
 definePageMeta({
+  name: RouteName.LearningModules,
   breadcrumb: {
     icon: 'i-heroicons:squares-2x2',
     ariaLabel: 'Модули обучения',
@@ -10,9 +13,7 @@ definePageMeta({
 })
 
 const links = useBreadcrumbItems()
-const type = useRouteQuery('type', undefined, {
-  transform: (value) => value ? String(value) : undefined
-})
+const type = useTypeRouteQuery()
 </script>
 
 <template>

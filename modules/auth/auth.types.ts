@@ -1,7 +1,7 @@
-import type { UserInfoDto } from '~/modules/users/users.types'
+import type { UserInfo } from '~/modules/users/users.types'
 
 export type AuthSession = {
-  user: UserInfoDto
+  user: UserInfo
   accessToken: string
   refreshToken: string
 }

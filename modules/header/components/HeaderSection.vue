@@ -1,20 +1,24 @@
 <script setup lang="ts">
 import { RouteName } from '~/modules/router/router.consts.js'
 import UserInfo from '~/modules/users/components/UserInfo.vue'
+import { useActiveSubscription } from '~/modules/subscription/model/use-active-subscription'
+import { useUserSession } from '#imports'
 
 const links = [
   {
-    to: { query: { type: 'course' } },
+    to: { name: RouteName.LearningModules, query: { type: 'course' } },
     text: 'Курсы'
   },
   {
-    to: { query: { type: 'intensive' } },
+    to: {  name: RouteName.LearningModules, query: { type: 'intensive' } },
     text: 'Интенсивы'
   }
 ]
 
 const type = useRouteQuery('type')
 const { $auth } = useNuxtApp()
+const { progress } = useLoadingIndicator()
+
 </script>
 
 <template>

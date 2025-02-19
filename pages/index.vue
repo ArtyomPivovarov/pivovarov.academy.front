@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouteName } from '~/modules/router/router.consts'
 import LearningModulesGrid from '~/modules/learning-modules/components/LearningModulesGrid.vue'
+import { useTypeRouteQuery } from '~/modules/learning-modules/model/use-type-route-query'
 
 definePageMeta({
   name: RouteName.Main,
@@ -11,8 +12,10 @@ definePageMeta({
     label: 'Главная'
   },
 })
+
+const type = useTypeRouteQuery()
 </script>
 
 <template>
-  <LearningModulesGrid />
+  <LearningModulesGrid :type="type"/>
 </template>

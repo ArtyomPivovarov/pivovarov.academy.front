@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import HeaderSection from '~/modules/header/components/HeaderSection.vue'
-import BackButton from '~/modules/header/components/BackButton.vue'
-
-const route = useRoute()
-const router = useRouter()
 </script>
 
 <template>

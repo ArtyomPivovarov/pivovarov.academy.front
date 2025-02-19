@@ -12,8 +12,12 @@ const {
   params: { moduleId, lessonId }
 } = useRoute()
 
-const { data: learningModule } = useLearningModule(toRef(() => Number(moduleId)))
-const { data: lesson } = useLesson(toRef(() => Number(lessonId)))
+const { data: learningModule, suspense: learningModuleSuspense } = useLearningModule(toRef(() => Number(moduleId)))
+const { data: lesson, suspense: lessonSuspense } = useLesson(toRef(() => Number(lessonId)))
+
+onServerPrefetch(async () => {
+  await Promise.all([learningModuleSuspense(), lessonSuspense()])
+})
 
 const links = useBreadcrumbItems({
   overrides: computed(() => [
@@ -34,5 +38,5 @@ const links = useBreadcrumbItems({
 <template>
   <UBreadcrumb :links="links" class="mb-4" />
 
-  <LessonDetail :module-id="Number(moduleId)" :id="Number(lessonId)" />
+  <LessonDetail v-if="learningModule && lesson" :learning-module="learningModule" :lesson="lesson" />
 </template>
