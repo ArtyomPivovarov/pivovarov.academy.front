@@ -35,7 +35,7 @@ const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
       name: RouteName.LearningModule,
       params: { moduleId: learningModule.id.toString() }
     }"
-    class="flex flex-col rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all cursor-pointer hover:scale-105"
+    class="flex flex-col rounded-3xl bg-color border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all cursor-pointer hover:scale-105"
   >
     <div class="text-xl font-semibold">
       <div class="float-right ml-2 flex flex-col gap-1 items-end">

@@ -28,7 +28,7 @@ const { progress } = useLoadingIndicator()
     <div class="flex w-full items-center justify-between">
       <NuxtLink
         :to="{ name: RouteName.Main }"
-        class="flex items-center text-gray-800 dark:text-gray-50"
+        class="flex items-center"
       >
         <div class="text-2xl md:text-base font-bold leading-none">pivovarov.academy</div>
       </NuxtLink>

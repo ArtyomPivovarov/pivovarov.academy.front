@@ -17,8 +17,13 @@ export default <Partial<Config>>{
       xs: { max: '319px' },
       'xs-more': { min: '320px' }
     },
-    aspectRatio: {
-      '16/9': '16/9',
+    extend: {
+      aspectRatio: {
+        '16/9': '16/9',
+      },
+      colors: {
+        'dark-gray': '#111',
+      },
     }
   }
 }

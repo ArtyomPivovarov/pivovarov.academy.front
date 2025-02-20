@@ -3,7 +3,7 @@ import HeaderSection from '~/modules/header/components/HeaderSection.vue'
 </script>
 
 <template>
-  <div class="relative pt-20 text-gray-300">
+  <div class="relative pt-20 ">
     <HeaderSection />
 
     <main class="p-8 md:p-5 max-w-[1280px] mx-auto box-content">

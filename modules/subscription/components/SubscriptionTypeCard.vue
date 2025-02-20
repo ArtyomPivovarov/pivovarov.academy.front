@@ -1,10 +1,27 @@
 <script setup lang="ts">
 import type { SubscriptionType } from '~/modules/subscription/subscription.types'
 import { useActiveSubscription } from '~/modules/subscription/model/use-active-subscription'
+import PriceText from '~/modules/price/ui/PriceText.vue'
 
-defineProps<{
+const props = defineProps<{
   type: SubscriptionType
 }>()
+
+const periodText = computed(() => {
+  if (props.type.period === 'always') {
+    return 'всегда'
+  }
+
+  if (props.type.period === 'month') {
+    return 'месяц'
+  }
+
+  if (props.type.period === 'year') {
+    return 'год'
+  }
+
+  return ''
+})
 
 const { data: subscription } = useActiveSubscription()
 </script>
@@ -16,7 +33,7 @@ const { data: subscription } = useActiveSubscription()
     'pointer-events-none': type.level <= (subscription?.type.level ?? 0),
     'bg-white/20 border-white/50': type.level === 0,
     'transition-all cursor-pointer': type.level > 0,
-    'hover:border-primary/75 hover:dark:border-primary/75 scale-110 sm:scale-105 hover:scale-[115%] sm:hover:scale-110 border-white/50': type.level === 1,
+    'bg-color  hover:border-primary/75 hover:dark:border-primary/75 scale-110 sm:scale-105 hover:scale-[115%] sm:hover:scale-110 border-white/50': type.level === 1,
     'bg-gradient-to-r from-purple-500 to-pink-500 border-none hover:scale-105 text-white': type.level === 2,
   }"
   >
@@ -26,11 +43,11 @@ const { data: subscription } = useActiveSubscription()
 
     <div class="mb-8">
         <span class="font-bold text-2xl">
-          {{ type.price }}&nbsp;₽
+          <PriceText :price="type.price" />
         </span>
 
       <span class="font-semibold">
-        / {{ type.period }}
+        / {{ periodText }}
         </span>
     </div>
 

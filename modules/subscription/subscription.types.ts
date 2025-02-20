@@ -10,13 +10,15 @@ export interface Subscription {
   updatedAt: string
 }
 
+export type SubscriptionPeriod = 'month' | 'year' | string
+
 export interface SubscriptionType {
   id: number
   title: string
   slug: string
   level: number
   price: number
-  period: string
+  period: SubscriptionPeriod
   description: string
   createdAt: string
   updatedAt: string

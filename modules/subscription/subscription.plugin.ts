@@ -1,4 +1,4 @@
-import type { Subscription } from '~/modules/subscription/subscription.types'
+import type { Subscription, SubscriptionPeriod } from '~/modules/subscription/subscription.types'
 import type { SubscriptionType } from '~/modules/subscription/subscription.types'
 
 export default defineNuxtPlugin({
@@ -11,7 +11,9 @@ export default defineNuxtPlugin({
       provide: {
         subscription: {
           getActive: async () => $api<{ subscription: Subscription }>(baseUrl + '/active').then(res => res.subscription),
-          getTypes: async () => $api<SubscriptionType[]>(baseUrl + '/types'),
+          getTypes: async ({ period }: { period?: SubscriptionPeriod }) => $api<SubscriptionType[]>(baseUrl + '/types', {
+            query: { period }
+          }),
           buy: async (typeId: number) => $api<Subscription>(baseUrl + '/buy', { method: 'POST', body: { typeId } }),
         },
       }

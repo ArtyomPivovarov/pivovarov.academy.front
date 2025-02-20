@@ -1,40 +1,24 @@
 <script setup lang="ts">
-defineProps<{
-  src: string
+import { useVideo } from '~/modules/video/model/use-video'
+
+const props = defineProps<{
+  videoId: number
 }>()
 
-const video = ref<HTMLVideoElement | null>(null)
-const { playing, } = useMediaControls(video)
+const { data: video, suspense } = useVideo(toRef(() => props.videoId))
+await suspense()
+
+const videoRef = ref<HTMLVideoElement | null>(null)
+const { playing, } = useMediaControls(videoRef)
 </script>
 
 <template>
-  <div class="relative" >
-    <video
-      :src="src"
-      ref="video"
-      class="aspect-16/9 w-full border-0 rounded-lg backdrop-blur-sm"
-      :class="{ 'backdrop-blur-sm': video?.paused }"
-      controls
-    />
-
-    <Transition
-      enter-active-class="duration-200 ease-out"
-      enter-from-class="transform opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="duration-200 ease-in"
-      leave-from-class="opacity-100"
-      leave-to-class="transform opacity-0"
-      >
-      <div
-        v-show="!playing"
-        class="absolute inset-0 flex justify-center items-center"
-        @click="playing = true">
-<!--        <UButton-->
-<!--          variant="link"-->
-<!--        >-->
-<!--          <Icon name="i-heroicons:play-circle-16-solid" class="size-16"></Icon>-->
-<!--        </UButton>-->
-      </div>
-    </Transition>
-  </div>
+  <video
+    v-if="video"
+    :src="video.src"
+    ref="video"
+    class="aspect-16/9 w-full backdrop-blur-sm border-4 border-primary/50 rounded-2xl"
+    :class="{ 'backdrop-blur-sm': videoRef?.paused }"
+    controls
+  />
 </template>
