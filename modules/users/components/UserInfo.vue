@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useActiveSubscription } from '~/modules/subscription/model/use-active-subscription.js'
+import SubscriptionTypeBadge from '~/modules/subscription/ui/SubscriptionTypeBadge.vue'
 
 const { data: subscription } = useActiveSubscription()
 </script>
@@ -9,10 +10,9 @@ const { data: subscription } = useActiveSubscription()
     <div v-if="loggedIn && user" class="sm:max-w-20 text-ellipsis overflow-hidden">
       {{ user.email }}
 
-      <UBadge
+      <SubscriptionTypeBadge
         v-if="subscription"
-        :label="subscription.type.title"
-        :color="subscription.type.level > 1 ? 'violet' : 'black'"
+        :subscription-type="subscription.type"
         class="ml-1"
       />
     </div>

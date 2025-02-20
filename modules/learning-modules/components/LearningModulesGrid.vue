@@ -20,6 +20,6 @@ onServerPrefetch(async () => {
 
 <template>
   <div class="mx-auto flex flex-wrap justify-center gap-4 2xl-more:container">
-    <LearningModuleCard v-for="item in data" :key="item.id" :module="item" class="w-[320px] sm:w-full" />
+    <LearningModuleCard v-for="item in data" :key="item.id" :learning-module="item" class="w-[320px] sm:w-full" />
   </div>
 </template>

@@ -7,13 +7,14 @@ import { LM_TECHNOLOGY_PRESET } from '~/modules/learning-modules/learning-module
 import { RouteName } from '~/modules/router/router.consts'
 import TechnologyBadge from '~/modules/learning-modules/ui/TechnologyBadge.vue'
 import type { BadgeVariant } from '#ui/types'
+import SubscriptionTypeBadge from '~/modules/subscription/ui/SubscriptionTypeBadge.vue'
 
 const props = defineProps<{
-  module: LearningModule
+  learningModule: LearningModule
 }>()
 
 const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
-  switch (props.module.level) {
+  switch (props.learningModule.level) {
     case LearningModuleLevel.Trainee:
       return { label: 'Стажёр', variant: 'soft' }
     case LearningModuleLevel.Junior:
@@ -32,27 +33,32 @@ const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
   <NuxtLink
     :to="{
       name: RouteName.LearningModule,
-      params: { moduleId: module.id.toString() }
+      params: { moduleId: learningModule.id.toString() }
     }"
     class="flex flex-col rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 pb-6 px-5 hover:border-primary/75 hover:dark:border-primary/75 transition-all cursor-pointer hover:scale-105"
   >
     <div class="text-xl font-semibold">
-      <UBadge
-        v-if="module.level"
-        :variant="levelData.variant"
-        class="capitalize float-right inline-block ml-2"
-      >
-        {{ levelData.label }}
-      </UBadge>
+      <div class="float-right ml-2 flex flex-col gap-1 items-end">
+        <UBadge
+          v-if="learningModule.level"
+          :variant="levelData.variant"
+          class="capitalize"
+        >
+          {{ levelData.label }}
+        </UBadge>
 
-      <span class="line-clamp-2">{{ module.title }}</span>
+        <SubscriptionTypeBadge v-if="learningModule.subscriptionType" :subscription-type="learningModule.subscriptionType" />
+      </div>
+
+
+      <span class="line-clamp-2">{{ learningModule.title }}</span>
     </div>
 
     <div class="mt-auto">
       <UIcon
         :name="
-          (module.technologies?.[0] &&
-            LM_TECHNOLOGY_PRESET[module.technologies?.[0]].icon) ||
+          (learningModule.technologies?.[0] &&
+            LM_TECHNOLOGY_PRESET[learningModule.technologies?.[0]].icon) ||
           'i-hugeicons:ai-brain-05'
         "
         class="block w-[40%] h-max aspect-[1] mx-auto my-6"
@@ -60,7 +66,7 @@ const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
 
       <div class="flex flex-wrap gap-1">
         <TechnologyBadge
-          v-for="technology in module.technologies"
+          v-for="technology in learningModule.technologies"
           :key="technology"
           :technology="technology"
         />

@@ -1,5 +1,5 @@
 import type { Lesson } from '~/modules/lessons/lessons.types'
-import type { SubscriptionTypeSlug } from '~/modules/subscription/subscription.types'
+import type { SubscriptionType } from '~/modules/subscription/subscription.types'
 
 export enum LearningModuleLevel {
   Trainee = 'trainee',
@@ -56,7 +56,7 @@ export interface LearningModule {
   type: 'course' | 'intensive' | string
   level: LearningModuleLevel | null
   technologies: LearningModuleTechnology[] | null
-  subscriptionLevel: SubscriptionTypeSlug | null
+  subscriptionType: SubscriptionType | null
   title: string
   description: string | null
   published: boolean | null

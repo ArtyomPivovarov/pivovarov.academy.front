@@ -15,7 +15,7 @@ const props = defineProps<{
 }>()
 
 const videoAccessState = useContentAccessState(
-  computed(() => props.learningModule?.subscriptionLevel ?? null)
+  computed(() => props.learningModule?.subscriptionType?.level ?? null)
 )
 </script>
 
