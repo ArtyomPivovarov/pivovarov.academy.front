@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { SubscriptionPeriod } from '~/modules/subscription/subscription.types'
 
+defineProps<{
+  loading: boolean
+}>()
+
 const period = defineModel<SubscriptionPeriod>()
 const model = computed({
   get: () => period.value === 'year',
@@ -21,7 +25,7 @@ function handleClick(ev: MouseEvent) {
        На месяц
     </div>
 
-    <UToggle v-model="model" />
+    <UToggle v-model="model" :loading="loading" />
 
     <div>
       На год

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import VideoWatch from '~/modules/video/components/VideoWatch.vue'
 import type { LearningModule } from '~/modules/learning-modules/learning-modules.types'
 import type { Lesson } from '~/modules/lessons/lessons.types'
+import LessonContent from '~/modules/lessons/components/LessonContent.vue'
 
 const props = defineProps<{
   learningModule: LearningModule
@@ -21,7 +21,7 @@ const props = defineProps<{
       {{ lesson.description }}
     </div>
 
-    <VideoWatch
+    <LessonContent
       v-if="lesson.video"
       :video="{
         id: lesson.video.id,

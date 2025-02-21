@@ -1,8 +1,10 @@
 import { computed, type ComputedRef } from 'vue'
 import { useActiveSubscription } from '~/modules/subscription/model/use-active-subscription'
-import { ContentAccessState } from '~/modules/content-access/content-access.types'
+import { ContentAccessState } from '~/modules/content/content-access.types'
 
-export function useContentAccessState(requiredLevel: ComputedRef<number | null>) {
+export function useContentAccessState(
+  requiredLevel: ComputedRef<number | null>
+) {
   const { loggedIn } = useUserSession()
   const { data: activeSubscription } = useActiveSubscription()
 
@@ -17,6 +19,8 @@ export function useContentAccessState(requiredLevel: ComputedRef<number | null>)
       return ContentAccessState.NoSubscription
     }
 
-    return activeSubscription.value.type.level >= requiredLevel.value ? ContentAccessState.ActiveSubscription : ContentAccessState.InsufficientLevel
+    return activeSubscription.value.type.level >= requiredLevel.value
+      ? ContentAccessState.ActiveSubscription
+      : ContentAccessState.InsufficientLevel
   })
-} 
+}

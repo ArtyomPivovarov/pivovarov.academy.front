@@ -22,6 +22,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   if (isRegister.value) {
     try {
       const response = await $auth.register(event.data)
+
       console.log('Пользователь успешно зарегистрирован', response)
     } catch (error) {
       console.log('Ошибка регистрации', error)
@@ -29,6 +30,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   } else {
     try {
       const response = await $auth.login(event.data)
+      await fetch()
       console.log('Пользователь успешно авторизован', response)
     } catch (error) {
       console.log('Ошибка авторизации', error)
@@ -38,15 +40,29 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+  <UForm
+    :schema="schema"
+    :state="state"
+    class="space-y-4"
+    @submit="onSubmit"
+  >
     Регистрация: <UToggle v-model="isRegister" />
 
-    <UFormGroup label="Email" name="email">
+    <UFormGroup
+      label="Email"
+      name="email"
+    >
       <UInput v-model="state.email" />
     </UFormGroup>
 
-    <UFormGroup label="Пароль" name="password">
-      <UInput v-model="state.password" type="password" />
+    <UFormGroup
+      label="Пароль"
+      name="password"
+    >
+      <UInput
+        v-model="state.password"
+        type="password"
+      />
     </UFormGroup>
 
     <UButton type="submit">Отправить</UButton>

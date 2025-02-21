@@ -6,9 +6,15 @@ import SubscriptionTypeCard from '~/modules/subscription/components/Subscription
 import SubscriptionPeriodToggle from '~/modules/subscription/ui/SubscriptionPeriodToggle.vue' // Подключаем ваш композабл `use-subscription-types`
 
 const { $subscription } = useNuxtApp()
-const period = ref<'month' | 'year'>('year')
-const { data: subscriptionTypes, suspense: typesSuspense } = useSubscriptionTypes(period)
 const queryClient = useQueryClient()
+const period = ref<'month' | 'year'>('year')
+
+const {
+  data: subscriptionTypes,
+  suspense: typesSuspense,
+  isPending
+} = useSubscriptionTypes(period)
+await typesSuspense()
 
 const freeType: SubscriptionType = {
   id: 0,
@@ -22,14 +28,12 @@ const freeType: SubscriptionType = {
   updatedAt: '1970-01-01T00:00:00.000Z'
 }
 
-onServerPrefetch(async () => {
-  await typesSuspense()
-})
-
 async function handleBuySubscription(id: number) {
   try {
     await $subscription.buy(id)
-    await queryClient.invalidateQueries({ queryKey: [SubscriptionQuery.Active] })
+    await queryClient.invalidateQueries({
+      queryKey: [SubscriptionQuery.Active]
+    })
   } catch (error) {
     // Если произошла ошибка, выводим её в консоль
     console.error(error)
@@ -39,11 +43,28 @@ async function handleBuySubscription(id: number) {
 
 <template>
   <div class="flex flex-col items-center">
-    <SubscriptionPeriodToggle v-model="period" class="mb-12"/>
+    <SubscriptionPeriodToggle
+      v-model="period"
+      :loading="isPending"
+      class="mb-8 xl:mb-6"
+    />
 
-    <div class="flex flex-wrap justify-center sm:flex-col sm:items-center gap-7">
-      <SubscriptionTypeCard :type="freeType" @click="handleBuySubscription(freeType.id)" />
-      <SubscriptionTypeCard v-for="type in subscriptionTypes" :key="type.id" :type="type" @click="handleBuySubscription(type.id)" />
+    <div
+      class="flex justify-center lg:flex-wrap gap-7 w-full overflow-auto py-6 snap-x snap-mandatory scrollbar"
+    >
+      <SubscriptionTypeCard
+        :type="freeType"
+        @click="handleBuySubscription(freeType.id)"
+        class="snap-end"
+      />
+
+      <SubscriptionTypeCard
+        v-for="type in subscriptionTypes"
+        :key="type.id"
+        :type="type"
+        @click="handleBuySubscription(type.id)"
+        class="snap-center"
+      />
     </div>
   </div>
 </template>

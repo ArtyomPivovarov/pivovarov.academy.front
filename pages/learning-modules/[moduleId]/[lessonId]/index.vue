@@ -5,18 +5,35 @@ import { useLesson } from '~/modules/lessons/model/use-lesson'
 import { useLearningModule } from '~/modules/learning-modules/model/use-learning-module'
 
 definePageMeta({
-  name: RouteName.Lesson,
+  name: RouteName.Lesson
 })
 
+const runtimeConfig = useRuntimeConfig()
 const {
   params: { moduleId, lessonId }
 } = useRoute()
 
-const { data: learningModule, suspense: learningModuleSuspense } = useLearningModule(toRef(() => Number(moduleId)))
-const { data: lesson, suspense: lessonSuspense } = useLesson(toRef(() => Number(lessonId)))
+const { data: learningModule, suspense: learningModuleSuspense } =
+  useLearningModule(toRef(() => Number(moduleId)))
+const { data: lesson, suspense: lessonSuspense } = useLesson(
+  toRef(() => Number(lessonId))
+)
 
 onServerPrefetch(async () => {
   await Promise.all([learningModuleSuspense(), lessonSuspense()])
+})
+
+useHead({
+  title: computed(
+    () =>
+      `${lesson.value?.title || ''} | ${learningModule.value?.title || ''} | ${runtimeConfig.public.domain}`
+  ),
+  meta: [
+    {
+      name: 'description',
+      content: lesson.value?.description || ''
+    }
+  ]
 })
 
 const links = useBreadcrumbItems({
@@ -36,7 +53,14 @@ const links = useBreadcrumbItems({
 </script>
 
 <template>
-  <UBreadcrumb :links="links" class="mb-4" />
+  <UBreadcrumb
+    :links="links"
+    class="mb-4"
+  />
 
-  <LessonDetail v-if="learningModule && lesson" :learning-module="learningModule" :lesson="lesson" />
+  <LessonDetail
+    v-if="learningModule && lesson"
+    :learning-module="learningModule"
+    :lesson="lesson"
+  />
 </template>
