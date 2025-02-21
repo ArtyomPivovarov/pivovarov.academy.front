@@ -11,14 +11,30 @@ export default defineNuxtConfig({
     '@hebilicious/vue-query-nuxt',
     '@nuxt/ui',
     'nuxt-auth-utils',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    'nuxt-seo-utils',
   ],
-  plugins: ['~/modules/api/api.plugin.ts', '~/modules/auth/auth.plugin.ts'],
+  plugins: [
+    '~/modules/query/query.plugin.ts',
+    '~/modules/api/api.plugin.ts',
+    '~/modules/auth/auth.plugin.ts',
+    '~/modules/subscription/subscription.plugin.ts',
+    '~/modules/video/video.plugin.ts',
+  ],
   routeRules: {
     '/backend-api/**': {
       proxy: `${process.env.API_URL || 'http://localhost:4200/api'}/**`
     }
   },
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  tailwindcss: {
+    configPath: '@/tailwind.config.ts',
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 })

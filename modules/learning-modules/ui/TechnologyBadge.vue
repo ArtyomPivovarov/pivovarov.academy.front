@@ -11,14 +11,14 @@ defineProps<{
   <UBadge
     :style="{
       boxShadow: 'none',
-      border: `2px solid ${LM_TECHNOLOGY_PRESET[technology].color}`
+      border: `2px solid ${LM_TECHNOLOGY_PRESET[technology]?.color || 'white'}`
     }"
     :ui="{
       rounded: 'rounded-full'
     }"
     color="white"
     variant="outline"
-    class="capitalize inline-block ml-1"
+    class="inline-block ml-1"
   >
     {{ technology }}
   </UBadge>

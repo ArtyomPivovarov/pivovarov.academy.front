@@ -7,12 +7,15 @@ const props = defineProps<{
   id: number
 }>()
 
-const { data: learningModule } = useLearningModule(toRef(() => props.id))
+const { data: learningModule, suspense } = useLearningModule(toRef(() => props.id))
+onServerPrefetch(async () => {
+  await suspense()
+})
 </script>
 
 <template>
   <div v-if="learningModule">
-    <h1 class="text-5xl font-medium text-gray-50 mb-12">
+    <h1 class="text-5xl md:text-2xl font-medium text-gray-50 mb-8 md:mb-6">
       {{ learningModule.title }}
 
       <div class="inline-flex flex-wrap gap-1 align-middle">
@@ -24,6 +27,8 @@ const { data: learningModule } = useLearningModule(toRef(() => props.id))
       </div>
     </h1>
 
+    <div class="text-content mb-14 md:mb-8" v-html="learningModule.description" />
+
     <nav class="flex flex-col gap-3 max-w-2xl text-xl">
       <NuxtLink
         v-for="(lesson, index) in learningModule.lessons"
@@ -32,14 +37,12 @@ const { data: learningModule } = useLearningModule(toRef(() => props.id))
           name: RouteName.Lesson,
           params: { moduleId: learningModule.id, lessonId: lesson.id }
         }"
-        class="flex items-center rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 px-5 hover:border-primary/75 hover:dark:border-primary/75 hover:text-white transition-all cursor-pointer user-select-none"
+        class="flex items-center rounded-3xl border-4 border-gray-950 dark:border-white/50 py-4 px-5 hover:border-primary/75 hover:dark:border-primary/75 hover:text-white transition-all cursor-pointer user-select-none md:text-base"
       >
         {{ index + 1 }}. {{ lesson.title }}
 
         <UIcon name="i-mdi:chevron-right" class="ml-auto size-6" />
       </NuxtLink>
     </nav>
-
-    <div class="mt-20 text-content" v-html="learningModule.description" />
   </div>
 </template>

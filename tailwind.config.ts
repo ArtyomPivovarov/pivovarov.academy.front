@@ -16,6 +16,14 @@ export default <Partial<Config>>{
       'sm-more': { min: '640px' },
       xs: { max: '319px' },
       'xs-more': { min: '320px' }
+    },
+    extend: {
+      aspectRatio: {
+        '16/9': '16/9',
+      },
+      colors: {
+        'dark-gray': '#111',
+      },
     }
   }
 }

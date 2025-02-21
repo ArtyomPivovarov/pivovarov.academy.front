@@ -1,23 +1,37 @@
 <script setup lang="ts">
-import { useLesson } from '~/modules/lessons/model/use-lesson'
-import { useLearningModule } from '~/modules/learning-modules/model/use-learning-module'
 import VideoWatch from '~/modules/video/components/VideoWatch.vue'
+import type { LearningModule } from '~/modules/learning-modules/learning-modules.types'
+import type { Lesson } from '~/modules/lessons/lessons.types'
 
 const props = defineProps<{
-  moduleId: number
-  id: number
+  learningModule: LearningModule
+  lesson: Lesson
 }>()
 
-const { data: learningModule } = useLearningModule(toRef(() => props.moduleId))
-const { data: lesson } = useLesson(toRef(() => props.id))
+
 </script>
 
 <template>
   <div v-if="learningModule && lesson">
-    <h1 class="text-5xl font-medium text-gray-50 mb-12">
+    <h1 class="text-5xl md:text-2xl font-medium text-gray-50 mb-5 md:mb-3">
       {{ lesson.title }}
     </h1>
 
-    <VideoWatch v-if="lesson?.video" :src="lesson.video.src" />
+    <div class="text-content mb-12 md:mb-7">
+      {{ lesson.description }}
+    </div>
+
+    <VideoWatch
+      v-if="lesson.video"
+      :video="{
+        id: lesson.video.id,
+        preview: {
+          src: lesson.video.previewSrc,
+          alt: lesson.title
+        }
+      }"
+      :subscription-level="learningModule.subscriptionType?.level"
+      class="mb-6 md:mb-4"
+    />
   </div>
 </template>

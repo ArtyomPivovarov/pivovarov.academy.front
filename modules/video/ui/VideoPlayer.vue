@@ -1,15 +1,24 @@
 <script setup lang="ts">
-defineProps<{
-  src: string
+import { useVideo } from '~/modules/video/model/use-video'
+
+const props = defineProps<{
+  videoId: number
 }>()
+
+const { data: video, suspense } = useVideo(toRef(() => props.videoId))
+await suspense()
+
+const videoRef = ref<HTMLVideoElement | null>(null)
+const { playing, } = useMediaControls(videoRef)
 </script>
 
 <template>
-  <iframe
-    :src="src"
-    loading="lazy"
-    style="border: 0; width: 800px; height: 450px"
-    allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-    allowfullscreen="true"
+  <video
+    v-if="video"
+    :src="video.src"
+    ref="video"
+    class="aspect-16/9 w-full backdrop-blur-sm border-4 border-primary/50 rounded-2xl"
+    :class="{ 'backdrop-blur-sm': videoRef?.paused }"
+    controls
   />
 </template>

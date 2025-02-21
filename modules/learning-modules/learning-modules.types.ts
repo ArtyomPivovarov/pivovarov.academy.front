@@ -1,4 +1,5 @@
 import type { Lesson } from '~/modules/lessons/lessons.types'
+import type { SubscriptionType } from '~/modules/subscription/subscription.types'
 
 export enum LearningModuleLevel {
   Trainee = 'trainee',
@@ -14,7 +15,7 @@ export enum LearningModuleTechnology {
   TypeScript = 'typescript',
   Sass = 'sass',
   AngularJS = 'angular-js',
-  ReactJs = 'react-js',
+  ReactJs = 'React.js',
   VueJs = 'vue-js',
   NextJS = 'next-js',
   NuxtJS = 'nuxt-js',
@@ -46,14 +47,16 @@ export enum LearningModuleTechnology {
   GitLab = 'gitlab',
   VSCode = 'vscode',
   WebStorm = 'webstorm',
-  IntelliJIDEA = 'intellij-idea'
+  IntelliJIDEA = 'intellij-idea',
+  SoftSkills = 'Soft skills'
 }
 
 export interface LearningModule {
   id: number
-  type: 'course' | 'intensive'
+  type: 'course' | 'intensive' | string
   level: LearningModuleLevel | null
   technologies: LearningModuleTechnology[] | null
+  subscriptionType: SubscriptionType | null
   title: string
   description: string | null
   published: boolean | null

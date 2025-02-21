@@ -3,10 +3,10 @@ import HeaderSection from '~/modules/header/components/HeaderSection.vue'
 </script>
 
 <template>
-  <div class="relative pt-24 text-gray-300">
+  <div class="relative pt-20 ">
     <HeaderSection />
 
-    <main class="px-8">
+    <main class="p-8 md:p-5 max-w-[1280px] mx-auto box-content">
       <slot />
     </main>
   </div>

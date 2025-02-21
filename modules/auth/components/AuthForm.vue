@@ -7,7 +7,7 @@ const { $auth } = useNuxtApp()
 const isRegister = useBooleanQuery('registration')
 
 const schema = zod.object({
-  email: zod.string().email('Неверный email'),
+  email: zod.string().email('Некорректный email'),
   password: zod.string().min(5, 'Пароль должен быть не менее 5 символов')
 })
 
