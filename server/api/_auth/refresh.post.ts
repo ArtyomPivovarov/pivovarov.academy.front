@@ -24,8 +24,5 @@ export default defineEventHandler(async event => {
 
   await setUserSession(event, response)
 
-  return {
-    status: 200,
-    body: response
-  }
+  return response
 })

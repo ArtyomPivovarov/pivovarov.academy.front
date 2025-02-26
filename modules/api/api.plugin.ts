@@ -1,15 +1,15 @@
 export default defineNuxtPlugin({
   name: 'api',
   setup: nuxtApp => {
-    const { session, clear, fetch: fetchSession } = useUserSession()
+    const { $auth } = useNuxtApp()
+    const { session, clear } = useUserSession()
     let refreshPromise: Promise<void> | null = null
 
     const $api = $fetch.create({
       baseURL: '/backend-api',
-      async onRequest({ request, options, error }) {
+      async onRequest({ options }) {
         if (refreshPromise) {
           await refreshPromise
-          await fetchSession()
         }
 
         if (session.value.accessToken) {
@@ -30,12 +30,9 @@ export default defineNuxtPlugin({
         if (response.status === 401 && session.value.refreshToken) {
           try {
             if (!refreshPromise) {
-              refreshPromise = $fetch('/api/_auth/refresh', {
-                method: 'post'
-              })
+              refreshPromise = $auth.refresh()
             }
             await refreshPromise
-            await fetchSession()
 
             const newRequest = new Request(request)
             newRequest.headers.set(

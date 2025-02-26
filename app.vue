@@ -4,7 +4,7 @@ import AuthModal from '~/modules/auth/components/AuthModal.vue'
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="rgb(var(--color-primary-600))"/>
+  <NuxtLoadingIndicator color="rgb(var(--color-primary-600))" />
 
   <NuxtLayout>
     <NuxtPage />

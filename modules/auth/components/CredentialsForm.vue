@@ -3,7 +3,7 @@ import zod from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
 const emit = defineEmits<{
-  registered: []
+  registered: [email: string]
   'logged-in': []
 }>()
 const { $auth } = useNuxtApp()
@@ -19,38 +19,56 @@ const state = reactive({
   email: undefined,
   password: undefined
 })
+const loading = ref(false)
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  if (isRegister.value) {
-    try {
+  try {
+    loading.value = true
+    if (isRegister.value) {
       await $auth.register(event.data)
-      emit('registered')
-    } catch (error) {
-      console.log('Ошибка регистрации', error)
-    }
-  } else {
-    try {
+      emit('registered', event.data.email)
+    } else {
       await $auth.login(event.data)
       emit('logged-in')
-    } catch (error) {
-      console.log('Ошибка авторизации', error)
     }
+  } catch (error) {
+    console.log('Ошибка:', error)
+  } finally {
+    loading.value = false
   }
 }
 </script>
 
 <template>
-  <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+  <UForm
+    :schema="schema"
+    :state="state"
+    class="space-y-4 bg-color"
+    @submit="onSubmit"
+  >
     Регистрация: <UToggle v-model="isRegister" />
 
-    <UFormGroup label="Email" name="email">
+    <UFormGroup
+      label="Email"
+      name="email"
+    >
       <UInput v-model="state.email" />
     </UFormGroup>
 
-    <UFormGroup label="Пароль" name="password">
-      <UInput v-model="state.password" type="password" />
+    <UFormGroup
+      label="Пароль"
+      name="password"
+    >
+      <UInput
+        v-model="state.password"
+        type="password"
+      />
     </UFormGroup>
 
-    <UButton type="submit">Отправить</UButton>
+    <UButton
+      type="submit"
+      :loading="loading"
+      >Отправить</UButton
+    >
   </UForm>
 </template>
