@@ -11,25 +11,25 @@ Pivovarov Academy is a comprehensive e-learning platform that provides users wit
 ## 📸 Screenshots
 
 ### Courses Grid
-![Courses Grid](/screenshots/courses-grid.png)
+![Courses Grid](public/screenshots/courses-grid.png)
 
 ### Course Details
-![Course Detail](/screenshots/course-detail.png)
+![Course Detail](public/screenshots/course-detail.png)
 
 ### Lesson Page
-![Lesson Page](/screenshots/lesson-page.png)
+![Lesson Page](public/screenshots/lesson-page.png)
 
 <details>
 <summary>Mobile Screenshots</summary>
 
 ### Courses (Mobile)
-![Courses Mobile](/screenshots/courses-grid-mobile.png)
+![Courses Mobile](public/screenshots/courses-grid-mobile.png)
 
 ### Course Detail (Mobile)
-![Course Detail Mobile](/screenshots/course-detail-mobile.png)
+![Course Detail Mobile](public/screenshots/course-detail-mobile.png)
 
 ### Lesson (Mobile)
-![Lesson Mobile](/screenshots/lesson-mobile.png)
+![Lesson Mobile](public/screenshots/lesson-mobile.png)
 
 </details>
 
