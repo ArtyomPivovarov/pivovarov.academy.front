@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     // The private keys which are only available within server-side
     public: {
       // Keys within public, will be also exposed to the client-side
-      apiUrl: process.env.API_URL
+      apiUrl: process.env.API_URL,
+      mockMode: process.env.NUXT_PUBLIC_MOCK_MODE === 'true'
     }
   },
   modules: [
@@ -18,6 +19,7 @@ export default defineNuxtConfig({
     '~/modules/query/query.plugin.ts',
     '~/modules/api/api.plugin.ts',
     '~/modules/auth/auth.plugin.ts',
+    '~/modules/auth/mock-auth.plugin.ts',
     '~/modules/subscription/subscription.plugin.ts',
     '~/modules/video/video.plugin.ts',
   ],

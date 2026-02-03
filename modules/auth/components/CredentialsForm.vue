@@ -10,8 +10,8 @@ const { $auth } = useNuxtApp()
 
 const isRegister = useBooleanQuery('registration')
 const schema = zod.object({
-  email: zod.string().email('Некорректный email'),
-  password: zod.string().min(5, 'Пароль должен быть не менее 5 символов')
+  email: zod.string().email('Invalid email'),
+  password: zod.string().min(5, 'Password must be at least 5 characters')
 })
 type Schema = zod.output<typeof schema>
 
@@ -32,7 +32,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       emit('logged-in')
     }
   } catch (error) {
-    console.log('Ошибка:', error)
+    console.log('Error:', error)
   } finally {
     loading.value = false
   }
@@ -46,7 +46,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     class="space-y-4 bg-color"
     @submit="onSubmit"
   >
-    Регистрация: <UToggle v-model="isRegister" />
+    Registration: <UToggle v-model="isRegister" />
 
     <UFormGroup
       label="Email"
@@ -56,7 +56,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormGroup>
 
     <UFormGroup
-      label="Пароль"
+      label="Password"
       name="password"
     >
       <UInput
@@ -68,7 +68,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <UButton
       type="submit"
       :loading="loading"
-      >Отправить</UButton
+      >Submit</UButton
     >
   </UForm>
 </template>

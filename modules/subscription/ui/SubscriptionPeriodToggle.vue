@@ -22,13 +22,13 @@ function handleClick(ev: MouseEvent) {
 <template>
   <div class="flex items-center gap-4 cursor-pointer dark:text-zinc-400 dark:hover:text-color transition-colors" @click="handleClick">
     <div>
-       На месяц
+       Monthly
     </div>
 
     <UToggle v-model="model" :loading="loading" />
 
     <div>
-      На год
+      Yearly
     </div>
   </div>
 </template>

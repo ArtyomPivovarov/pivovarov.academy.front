@@ -36,7 +36,7 @@ async function handleSubmit(event: FormSubmitEvent<Schema>) {
     })
     emit('success')
   } catch (error) {
-    console.log('Ошибка подтверждения почты', error)
+    console.log('Email verification error', error)
   }
 }
 
@@ -67,12 +67,12 @@ function startTimer() {
     class="space-y-4 bg-color"
     @submit.prevent="handleSubmit"
   >
-    Введите код подтверждения из письма, отправленного на почту:
+    Enter the verification code from the email sent to:
     <strong>{{ email }}</strong>
 
     <div class="flex gap-1 items-end">
       <UFormGroup
-        label="Код"
+        label="Code"
         name="code"
         class="grow"
       >
@@ -83,13 +83,13 @@ function startTimer() {
         size="sm"
         :disabled="!!timerValue"
         icon="i-heroicons:arrow-path-16-solid"
-        aria-label="Отправить код заново"
+        aria-label="Resend code"
         @click="handleResendCode"
       />
     </div>
 
-    <div>Выслать повторно можно будет через {{ timerValue }}&nbsp;с.</div>
+    <div>You can resend the code in {{ timerValue }}&nbsp;s.</div>
 
-    <UButton type="submit">Отправить</UButton>
+    <UButton type="submit">Submit</UButton>
   </UForm>
 </template>

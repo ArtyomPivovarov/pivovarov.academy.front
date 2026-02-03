@@ -7,14 +7,14 @@ const { data: subscription } = useActiveSubscription()
 
 <template>
   <AuthState v-slot="{ loggedIn, user }">
-    <div v-if="loggedIn && user" class="sm:max-w-20 text-ellipsis overflow-hidden">
-      {{ user.email }}
+    <div v-if="loggedIn && user" class="flex items-center gap-1">
+      <div class="sm:max-w-20 text-ellipsis overflow-hidden">
+        {{ user.email }}
+      </div>
 
       <SubscriptionTypeBadge
         v-if="subscription"
-        :subscription-type="subscription.type"
-        class="ml-1"
-      />
+        :subscription-type="subscription.type" />
     </div>
   </AuthState>
 </template>

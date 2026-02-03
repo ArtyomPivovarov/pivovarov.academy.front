@@ -2,9 +2,36 @@
 
 Modern online learning platform built with Nuxt 3, featuring video courses, subscription management, and interactive learning modules.
 
+> **Backend Repository:** [pivovarov.academy.back](https://github.com/ArtyomPivovarov/pivovarov.academy.back)
+
 ## 📋 Overview
 
 Pivovarov Academy is a comprehensive e-learning platform that provides users with access to high-quality educational content through video lessons, structured learning modules, and a subscription-based access model.
+
+## 📸 Screenshots
+
+### Courses Grid
+![Courses Grid](/screenshots/courses-grid.png)
+
+### Course Details
+![Course Detail](/screenshots/course-detail.png)
+
+### Lesson Page
+![Lesson Page](/screenshots/lesson-page.png)
+
+<details>
+<summary>Mobile Screenshots</summary>
+
+### Courses (Mobile)
+![Courses Mobile](/screenshots/courses-grid-mobile.png)
+
+### Course Detail (Mobile)
+![Course Detail Mobile](/screenshots/course-detail-mobile.png)
+
+### Lesson (Mobile)
+![Lesson Mobile](/screenshots/lesson-mobile.png)
+
+</details>
 
 ## ✨ Features
 
@@ -68,6 +95,26 @@ Start the development server on `http://localhost:3000`:
 pnpm dev
 ```
 
+### Mock Mode (for Screenshots & Demos)
+
+Run the application with mock data instead of real API:
+
+```bash
+pnpm dev:mock
+```
+
+This mode:
+- ✅ Auto-logins with demo user (`demo@pivovarov.academy`)
+- 📦 Loads mock courses, lessons, and subscriptions
+- 🎨 Perfect for creating screenshots and demos
+- 🚀 No backend required
+
+Alternatively, set the environment variable:
+```bash
+cp env.mock.example .env
+pnpm dev
+```
+
 ### Linting
 
 Run ESLint to check and fix code quality:
@@ -95,6 +142,8 @@ pivovarov.academy.front/
 ├── pages/              # Application routes
 ├── layouts/            # Layout components
 ├── composables/        # Reusable composition functions
+├── utils/
+│   └── mocks/         # Mock data for demo mode
 ├── server/             # Server-side code and API
 │   ├── api/           # Server API endpoints
 │   └── plugins/       # Server plugins
@@ -134,6 +183,7 @@ pivovarov.academy.front/
 | Command | Description |
 |---------|-------------|
 | `pnpm dev` | Start development server |
+| `pnpm dev:mock` | Start with mock data (for screenshots/demos) |
 | `pnpm build` | Build for production |
 | `pnpm generate` | Generate static site |
 | `pnpm preview` | Preview production build |
@@ -178,6 +228,7 @@ routeRules: {
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `API_URL` | Backend API base URL | `http://localhost:4200/api` |
+| `NUXT_PUBLIC_MOCK_MODE` | Enable mock data for demos | `false` |
 
 ## 📱 Responsive Design
 
@@ -192,6 +243,10 @@ The application is fully responsive and optimized for:
 - HTTP-only cookies for session management
 - CSRF protection
 - Input validation with Zod schemas
+
+## 🔗 Related Projects
+
+- [Backend Repository](https://github.com/ArtyomPivovarov/pivovarov.academy.back) - NestJS backend API
 
 ## 📚 Additional Resources
 

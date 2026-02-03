@@ -78,7 +78,7 @@ function handlePlayClick() {
               v-if="contentAccessState === ContentAccessState.Unauthorized"
             >
               <WarningTitle>
-                Для просмотра урока необходимо авторизоваться
+                You need to login to watch this lesson
               </WarningTitle>
 
               <AuthForm class="w-96" />
@@ -90,7 +90,7 @@ function handlePlayClick() {
               "
             >
               <WarningTitle>
-                Для просмотра урока необходимо оформить подписку
+                You need a subscription to watch this lesson
               </WarningTitle>
 
               <SubscriptionTypeCards class="w-full" />
@@ -102,8 +102,7 @@ function handlePlayClick() {
               "
             >
               <WarningTitle>
-                Для просмотра этого урока требуется более высокий уровень
-                подписки
+                This lesson requires a higher subscription level
               </WarningTitle>
 
               <SubscriptionTypeCards class="w-full" />

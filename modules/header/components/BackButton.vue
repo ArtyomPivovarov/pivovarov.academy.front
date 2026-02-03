@@ -1,6 +1,6 @@
 <template>
   <UButton variant="link">
     <UIcon name="ep:arrow-left-bold"  />
-    Назад
+    Back
   </UButton>
 </template>

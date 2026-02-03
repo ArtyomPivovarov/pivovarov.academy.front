@@ -3,7 +3,7 @@ import { useSubscriptionTypes } from '@/modules/subscription/model/use-subscript
 import { SubscriptionQuery } from '~/modules/subscription/subscription.query'
 import type { SubscriptionType } from '~/modules/subscription/subscription.types'
 import SubscriptionTypeCard from '~/modules/subscription/components/SubscriptionTypeCard.vue'
-import SubscriptionPeriodToggle from '~/modules/subscription/ui/SubscriptionPeriodToggle.vue' // Подключаем ваш композабл `use-subscription-types`
+import SubscriptionPeriodToggle from '~/modules/subscription/ui/SubscriptionPeriodToggle.vue'
 
 const { $subscription } = useNuxtApp()
 const queryClient = useQueryClient()
@@ -19,8 +19,8 @@ await typesSuspense()
 const freeType: SubscriptionType = {
   id: 0,
   slug: 'free',
-  title: 'Бесплатный',
-  description: 'Позволяет просматривать видео',
+  title: 'Free',
+  description: 'Allows watching videos',
   price: 0,
   period: 'always',
   level: 0,
@@ -35,7 +35,6 @@ async function handleBuySubscription(id: number) {
       queryKey: [SubscriptionQuery.Active]
     })
   } catch (error) {
-    // Если произошла ошибка, выводим её в консоль
     console.error(error)
   }
 }

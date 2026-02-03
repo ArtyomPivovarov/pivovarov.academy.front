@@ -16,13 +16,13 @@ const props = defineProps<{
 const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
   switch (props.learningModule.level) {
     case LearningModuleLevel.Trainee:
-      return { label: 'Стажёр', variant: 'soft' }
+      return { label: 'Trainee', variant: 'soft' }
     case LearningModuleLevel.Junior:
-      return { label: 'Джуниор', variant: 'outline' }
+      return { label: 'Junior', variant: 'outline' }
     case LearningModuleLevel.Middle:
-      return { label: 'Средний', variant: 'subtle' }
+      return { label: 'Middle', variant: 'subtle' }
     case LearningModuleLevel.Senior:
-      return { label: 'Старший', variant: 'solid' }
+      return { label: 'Senior', variant: 'solid' }
     default:
       return { label: '', variant: 'solid' }
   }
@@ -51,7 +51,7 @@ const levelData = computed<{ label: string, variant: BadgeVariant }>(() => {
       </div>
 
 
-      <span class="line-clamp-2">{{ learningModule.title }}</span>
+      <h3 class="line-clamp-2 leading-tight whitespace-pre-line">{{ learningModule.title }}</h3>
     </div>
 
     <div class="mt-auto">

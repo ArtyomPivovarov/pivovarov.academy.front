@@ -7,11 +7,11 @@ import { useUserSession } from '#imports'
 const links = [
   {
     to: { name: RouteName.LearningModules, query: { type: 'course' } },
-    text: 'Курсы'
+    text: 'Courses'
   },
   {
     to: {  name: RouteName.LearningModules, query: { type: 'intensive' } },
-    text: 'Интенсивы'
+    text: 'Intensives'
   }
 ]
 
@@ -53,7 +53,7 @@ const { progress } = useLoadingIndicator()
               :to="{ query: { auth: 'true', registration: 'true' } }"
               class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 md:text-sm p-1"
             >
-              Регистрация
+              Sign Up
             </ULink>
 
             <ULink
@@ -62,7 +62,7 @@ const { progress } = useLoadingIndicator()
               class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 p-1"
             >
               <span class="md:hidden">
-                Войти
+                Login
               </span>
 
               <UIcon name="i-iconamoon:enter" class="md-more:hidden" size="20"/>

@@ -9,15 +9,15 @@ const props = defineProps<{
 
 const periodText = computed(() => {
   if (props.type.period === 'always') {
-    return 'всегда'
+    return 'always'
   }
 
   if (props.type.period === 'month') {
-    return 'месяц'
+    return 'month'
   }
 
   if (props.type.period === 'year') {
-    return 'год'
+    return 'year'
   }
 
   return ''
@@ -60,7 +60,7 @@ const { data: subscription } = useActiveSubscription()
       size="lg"
       class="mt-auto"
     >
-      Купить
+      Buy
     </UButton>
   </div>
 </template>
