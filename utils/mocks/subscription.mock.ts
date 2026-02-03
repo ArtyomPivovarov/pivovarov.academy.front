@@ -51,7 +51,7 @@ export const mockSubscriptionTypes: SubscriptionType[] = [
 export const mockActiveSubscription: Subscription = {
   id: 1,
   user: mockUser,
-  type: mockSubscriptionTypes[2], // Pro monthly
+  type: mockSubscriptionTypes[0], // Pro monthly
   startDate: new Date('2024-02-01'),
   endDate: new Date('2024-03-01'),
   createdAt: '2024-02-01T00:00:00.000Z',

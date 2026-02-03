@@ -57,7 +57,7 @@ function handlePlayClick() {
       v-if="playClicked"
       ref="contentRef"
       id="lesson-content"
-      class="lg-more:absolute lg-more:size-full scroll-mt-[100px] lg-more:flex flex-col items-center justify-center"
+      class="lg-more:absolute lg-more:size-full scroll-mt-[100px] lg-more:flex flex-col items-center justify-center backdrop-blur-sm bg-black/50"
     >
       <ClientOnly>
         <template
